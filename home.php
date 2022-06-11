@@ -20,6 +20,14 @@
         <link rel="stylesheet" href="css/style.css" />
 
         <title>Sistema de Gerenciamento - Home</title>
+        <style>
+            .alt-col {
+                background: #fff;
+            }
+            .alt-col:nth-child(2n) {
+                background: #ccc;
+            }
+        </style>
     </head>
     <body>
         <nav class="navbar bg-primary fixed-top">
@@ -113,8 +121,14 @@
                                     $res = $conn->query($sql);
                                     $qtd = $res->num_rows;
                                     if ($qtd > 0) {
+                                        print "<div class=\"d-flex w-100 mb-2\">
+                                            <p class=\"w-50 mb-0\">Quantidade</p>
+                                            <p class=\"w-50 mb-0\">Produto</p>
+                                        </div>";
                                         while($row = $res->fetch_object()) {
-                                            print "<div class=\"d-flex w-100\">
+                                            print "<div class=\"d-flex w-100 alt-col px-3 py-1\">
+                                                <p class=\"w-50 mb-0\">" . $row->quantidade . "</p>
+                                                <p class=\"w-50 mb-0\">" . $row->nome_produto . "</p>
                                             </div>";
                                         }
                                     } else {
