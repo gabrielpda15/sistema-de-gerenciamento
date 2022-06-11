@@ -29,7 +29,7 @@
             print "<td>".$row->id_produtos."</td>";
             print "<td>".$row->nome_produto."</td>";
             print "<td>".$row->categoria_produto."</td>";
-            print "<td>R$ ".str_replace('.', ',', number_format($row->preco_produto, 2))."</td>";
+            print "<td>R$ ".number_format($row->preco_produto, 2, ',', '.')."</td>";
             print "<td>
             <button onclick=\"location.href='produto?page=editar&id=".$row->id_produtos."';\" class='btn btn-primary'>Editar</button>
             <button onclick=\"location.href='entrada?id=".$row->id_produtos."';\" class='btn btn-secondary'>Estoque</button>

@@ -44,7 +44,7 @@
             print "<tr>"; 
             print "<td>".$row->id_entrada."</td>";
             print "<td>".$row->quantidade_entrada."</td>";
-            print "<td>R$ ".str_replace('.', ',', number_format($row->valor_entrada, 2))."</td>";
+            print "<td>R$ ".number_format($row->valor_entrada, 2, ',', '.')."</td>";
             print "<td>".$row->data_entrada."</td>";
             print "<td>
             <button onclick=\"if(confirm ('Tem certeza que deseja excluir?')){location.href='entrada?page=excluir&id=".$row->id_entrada."';}else{false;}\" class='btn btn-danger'>Excluir</button>

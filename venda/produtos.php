@@ -107,7 +107,7 @@
                 print "<td>" . $row['id'] . "</td>";
                 print "<td>" . $row['nome'] . "</td>";
                 print "<td>" . $row['quantidade'] . "</td>";
-                print "<td>" . $row['valor'] . "</td>";
+                print "<td>R$ " . number_format($row['valor'], 2, ',', '.') . "</td>";
                 print "<td>
                 <button type=\"submit\" class=\"btn btn-danger\">Excluir</button>
                 </td>";
