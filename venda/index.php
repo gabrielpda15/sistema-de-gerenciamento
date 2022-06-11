@@ -105,6 +105,9 @@
                             case "excluir":
                                 include("excluir.php");
                                 break;
+                            case "nota":
+                                include("nota.php");
+                                break;
                             default:
                                 include("listar.php");
                                 break;
