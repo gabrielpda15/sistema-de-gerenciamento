@@ -60,11 +60,11 @@
                             Relatorios
                         </a>
                         <ul class="dropdown-menu <?php print $menu_relatorio; ?>" aria-labelledby="relatorio-dropdown">
-                            <li><a class="dropdown-item <?php if ($selected_menu == 4) print " active"; ?>" href="#">
+                            <li><a class="dropdown-item <?php if ($selected_menu == 4) print " active"; ?>" href="relatorio/vendas">
                                 Relatorio de Vendas
                             </a></li>
                             <hr class="dropdown-divider">
-                            <li><a class="dropdown-item <?php if ($selected_menu == 5) print " active"; ?>" href="#">
+                            <li><a class="dropdown-item <?php if ($selected_menu == 5) print " active"; ?>" href="relatorio/entradas">
                                 Relatorio de Entradas
                             </a></li>
                         </ul>

@@ -17,25 +17,25 @@
                 <div class="d-flex flex-column w-100 h-100">
                     <button class="btn btn-primary w-auto me-auto px-3" onclick="history.back()">Voltar</button>
                     <?php
-                        include("../config.php");
+                        include "../config.php";
                         switch (@$_REQUEST["page"]) {
                             case "novo":
-                                include("novo.php");
+                                include "novo.php";
                                 break;
                             case "produtos":
-                                include("produtos.php");
+                                include "produtos.php";
                                 break;
                             case "cliente":
-                                include("cliente.php");
+                                include "cliente.php";
                                 break;
                             case "excluir":
-                                include("excluir.php");
+                                include "excluir.php";
                                 break;
                             case "nota":
-                                include("nota.php");
+                                include "nota.php";
                                 break;
                             default:
-                                include("listar.php");
+                                include "listar.php";
                                 break;
                         }
                     ?>
