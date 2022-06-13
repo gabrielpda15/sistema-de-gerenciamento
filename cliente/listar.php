@@ -22,17 +22,21 @@
         print "<th>NOME</th>";
         print "<th>CPF</th>";
         print "<th>TELEFONE</th>";
-        print "<th>AÇÕES</th>";
+        if ($_SESSION['admin'] == 1) {
+            print "<th>AÇÕES</th>";
+        }
         print "</tr>"; 
         while($row = $res->fetch_object()){
             print "<tr>"; 
             print "<td>".$row->id_cliente."</td>";
             print "<td>".$row->nome_cliente."</td>";
             print "<td>".$row->cpf_cliente."</td>";
-            print "<td>".$row->telefonecliente."</td>";
-            print "<td>
-            <button onclick=\"if(confirm ('Tem certeza que deseja excluir?')){location.href='cliente?page=excluir&id=".$row->id_cliente."';}else{false;}\" class='btn btn-danger'>Excluir</button>
-            </td>";
+            print "<td>".$row->telefonecliente."</td>";            
+            if ($_SESSION['admin'] == 1) {
+                print "<td>";
+                print "<button onclick=\"if(confirm ('Tem certeza que deseja excluir?')){location.href='cliente?page=excluir&id=".$row->id_cliente."';}else{false;}\" class='btn btn-danger'>Excluir</button>";
+                print "</td>";
+            }            
             print "</tr>"; 
         }
         print"</table>";

@@ -22,7 +22,9 @@
         print "<th>NOME DO PRODUTO</th>";
         print "<th>CATEGORIA</th>";
         print "<th>PREÇO</th>";
-        print "<th>AÇÕES</th>";
+        if ($_SESSION['admin'] == 1) {
+            print "<th>AÇÕES</th>";
+        }
         print "</tr>"; 
         while($row = $res->fetch_object()){
             print "<tr>"; 
@@ -30,11 +32,13 @@
             print "<td>".$row->nome_produto."</td>";
             print "<td>".$row->categoria_produto."</td>";
             print "<td>R$ ".number_format($row->preco_produto, 2, ',', '.')."</td>";
-            print "<td>
-            <button onclick=\"location.href='produto?page=editar&id=".$row->id_produtos."';\" class='btn btn-primary'>Editar</button>
-            <button onclick=\"location.href='entrada?id=".$row->id_produtos."';\" class='btn btn-secondary'>Estoque</button>
-            <button onclick=\"if(confirm ('Tem certeza que deseja excluir?')){location.href='produto?page=excluir&id=".$row->id_produtos."';}else{false;}\" class='btn btn-danger'>Excluir</button>
-            </td>";
+            if ($_SESSION['admin'] == 1) {
+                print "<td>";
+                print "<button onclick=\"location.href='produto?page=editar&id=".$row->id_produtos."';\" class='btn btn-primary me-2'>Editar</button>";
+                print "<button onclick=\"location.href='entrada?id=".$row->id_produtos."';\" class='btn btn-secondary me-2'>Estoque</button>";
+                print "<button onclick=\"if(confirm ('Tem certeza que deseja excluir?')){location.href='produto?page=excluir&id=".$row->id_produtos."';}else{false;}\" class='btn btn-danger'>Excluir</button>";
+                print "</td>";
+            }            
             print "</tr>"; 
         }
         print"</table>";
