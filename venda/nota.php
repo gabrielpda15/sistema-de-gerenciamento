@@ -72,7 +72,6 @@
                     <a href=\"/venda/$pdf_location\" target=\"_blank\">aqui</a>
                     para ver a nota.
                 </p>
-                <a class=\"btn btn-primary mx-auto px-4 w-auto\" href=\"/venda\">Voltar</a>
             </div>";
         } else {
             print "<script>alert('Essa venda não possui nenhum item ainda!');</script>";
