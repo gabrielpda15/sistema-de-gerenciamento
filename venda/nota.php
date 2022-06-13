@@ -65,8 +65,15 @@
             $pdf_location = 'notas_output/nota_'.$_REQUEST['id'].'.pdf';
             $pdf->generate($pdf_location);
     
-            print "<script>window.open('/venda/$pdf_location', '_blank').focus()</script>";
-            print "<script>location.href='/venda'</script>";
+            print "<div class=\"d-flex flex-column m-auto\">
+                <h4 class=\"mx-auto\">Nota emitida com sucesso!</h4>
+                <p class=\"mx-auto\">
+                    Clique 
+                    <a href=\"/venda/$pdf_location\" target=\"_blank\">aqui</a>
+                    para ver a nota.
+                </p>
+                <a class=\"btn btn-primary mx-auto px-4 w-auto\" href=\"/venda\">Voltar</a>
+            </div>";
         } else {
             print "<script>alert('Essa venda não possui nenhum item ainda!');</script>";
             print "<script>location.href='/venda'</script>";
