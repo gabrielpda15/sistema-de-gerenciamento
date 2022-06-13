@@ -3,6 +3,8 @@ require 'config.php';
 
 session_start();
 
+$erro_login = "style=\"display: none;\"";
+
 if (isset($_SESSION['usuario']) && strlen($_SESSION['usuario']) > 0) {
     header('Location: home.php');
 }
@@ -37,7 +39,7 @@ if (isset($_POST['usuario']) && isset($_POST['senha'])) {
 
         header('Location: home.php');
     } else {
-        echo 'falha ao logar! E-mail ou senha incorretos';
+        $erro_login = "style=\"display: block;\"";
     }
 }
 
@@ -73,6 +75,9 @@ if (isset($_POST['usuario']) && isset($_POST['senha'])) {
                         <div class="form-group my-1">
                             <label for="senha">Senha</label>
                             <input id="senha" type="password" class="form-control" name="senha" required>
+                        </div>
+                        <div class="my-4 mx-auto" <?php print $erro_login; ?>>
+                            <p class="text-danger">Falha ao logar! E-mail ou senha incorretos!</p>
                         </div>
                         <div class="form-group mt-4">
                             <button type="submit" class="btn btn-primary d-flex ms-auto">

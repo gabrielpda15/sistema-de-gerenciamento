@@ -7,8 +7,8 @@
     }
 
     if ($_SESSION['admin'] != 1) {
-        header('Location: ../home.php');
         $_SESSION['acesso_negado'] = "Acesso negado!\\nVocê não tem permissão para isso!";
+        header('Location: ../home.php');
     }
 ?>
 <!doctype html>
