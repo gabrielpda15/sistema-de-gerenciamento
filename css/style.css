@@ -1,3 +1,11 @@
+.alt-col {
+    background: #fff;
+}
+
+.alt-col:nth-child(2n) {
+    background: #ccc;
+}
+
 span.icon {
     display: inline-block;
 }

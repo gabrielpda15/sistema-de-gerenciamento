@@ -1,3 +1,10 @@
+<?php
+    if (!isset($title)) $title = "";
+    if (!isset($selected_menu)) $selected_menu = -1;
+    $menu_gerenciamento = $selected_menu >= 0 && $selected_menu <= 3 ? "show" : "";
+    $menu_relatorio = $selected_menu >= 4 && $selected_menu <= 5 ? "show" : "";
+    $menu_relatorio_admin = $_SESSION['admin'] == 1 ? "" : "style=\"display: none;\"";
+?>
 <nav class="navbar bg-primary fixed-top">
     <div class="container-fluid">
         <a class="navbar-brand" href="home.php" style="color: white">Sistema de Gerenciamento | <?php print $title; ?></a>
@@ -19,18 +26,18 @@
                             role="button" data-bs-toggle="dropdown" data-bs-auto-close="false">
                             Gerenciamento
                         </a>
-                        <ul class="dropdown-menu<?php if (isset($show_menu) && $show_menu == true) print " show"; ?>" aria-labelledby="gerenciamento-dropdown">
-                            <li><a class="dropdown-item<?php if (isset($selected_menu) && $selected_menu == 0) print " active"; ?>" href="venda">
+                        <ul class="dropdown-menu <?php print $menu_gerenciamento; ?>" aria-labelledby="gerenciamento-dropdown">
+                            <li><a class="dropdown-item<?php if ($selected_menu == 0) print " active"; ?>" href="venda">
                                 Gerenciamento de Venda
                             </a></li>
                             <hr class="dropdown-divider">
-                            <li><a class="dropdown-item<?php if (isset($selected_menu) && $selected_menu == 1) print " active"; ?>" href="cliente">
+                            <li><a class="dropdown-item<?php if ($selected_menu == 1) print " active"; ?>" href="cliente">
                                 Gerenciamento de Cliente
                             </a></li>
                             <?php
                                 if ($_SESSION['admin'] == 1) {
                                     print "<hr class=\"dropdown-divider\">";
-                                    if (isset($selected_menu) && $selected_menu == 2) {
+                                    if ($selected_menu == 2) {
                                         print "<li><a class=\"dropdown-item active\" href=\"funcionario\">";
                                     } else {
                                         print "<li><a class=\"dropdown-item\" href=\"funcionario\">";
@@ -40,24 +47,24 @@
                                 }
                             ?>
                             <hr class="dropdown-divider">
-                            <li><a class="dropdown-item<?php if (isset($selected_menu) && $selected_menu == 3) print " active"; ?>" href="produto">
+                            <li><a class="dropdown-item<?php if ($selected_menu == 3) print " active"; ?>" href="produto">
                                 Gerenciamento de Produto
                             </a></li>
                         </ul>
                     </li>
                 </ul>
-                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3" <?php print $menu_relatorio_admin ?>>
                     <li class="nav-item dropdown">
                         <a id="relatorio-dropdown" class="nav-link dropdown-toggle text-dark" href="#" role="button"
                             data-bs-toggle="dropdown" data-bs-auto-close="false">
                             Relatorios
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="relatorio-dropdown">
-                            <li><a class="dropdown-item" href="#">
+                        <ul class="dropdown-menu <?php print $menu_relatorio; ?>" aria-labelledby="relatorio-dropdown">
+                            <li><a class="dropdown-item <?php if ($selected_menu == 4) print " active"; ?>" href="#">
                                 Relatorio de Vendas
                             </a></li>
                             <hr class="dropdown-divider">
-                            <li><a class="dropdown-item" href="#">
+                            <li><a class="dropdown-item <?php if ($selected_menu == 5) print " active"; ?>" href="#">
                                 Relatorio de Entradas
                             </a></li>
                         </ul>

@@ -15,19 +15,10 @@
 <html lang="pt-br">
     <head>
         <base href="../">
-        <!-- Meta tags Obrigatórias -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="css/reset.css" />
-        <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
-        <link rel="stylesheet" href="css/style.css" />
-
-        <title>Sistema de Gerenciamento</title>
+        <?php include "../shared/head.php"; ?>
     </head>
     <body>
-        <?php $title = "Funcionários"; $show_menu = true; $selected_menu = 2; include "../shared/nav-bar.php"; ?>
+        <?php $title = "Funcionários"; $selected_menu = 2; include "../shared/nav-bar.php"; ?>
         <div class="d-flex w-100 h-100 pt-5 px-4 pb-4">
             <div class="d-flex w-100 h-100 mt-2 pt-4 px-5">
                 <div class="d-flex flex-column w-100 h-100">
@@ -52,10 +43,6 @@
                 </div>
             </div>
         </div>
-        <script src="js/jquery.slim.min.js"></script>
-        <script src="js/jquery.mask.min.js"></script>
-        <script src="js/popper.min.js"></script>
-        <script src="js/bootstrap/bootstrap.min.js"></script>
-        <script src="js/script.js"></script>
+        <?php include "../shared/scripts.php"; ?>
     </body>
 </html>
