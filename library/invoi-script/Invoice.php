@@ -230,8 +230,12 @@ class Invoice extends Fpdi
          $this->multiCell($widths[1], $this->layout['contentCellHeight'], utf8_decode($entry['description']), 0, $alignment[1]);
          $nextY = max($nextY, $this->getY());
          $this->setXY($this->layout['pagePaddingLeft'] + $widths[0] + $widths[1], $currentY);
-         $this->cell($widths[2], $this->layout['contentCellHeight'], $this->numberFormat($entry['price']), '', 0, $alignment[2]);
-         $total = $entry['quantity'] * $entry['price'];
+         if (is_string($entry['price'])) {
+            $this->cell($widths[2], $this->layout['contentCellHeight'], $entry['price'], '', 0, $alignment[2]);
+         } else {
+            $this->cell($widths[2], $this->layout['contentCellHeight'], $this->numberFormat($entry['price']), '', 0, $alignment[2]);
+         }         
+         $total = isset($entry['total']) ? $entry['total'] : $entry['quantity'] * $entry['price'];
          $this->cell($widths[3], $this->layout['contentCellHeight'], $this->numberFormat($total), '', 1, $alignment[3]);
       }
 
@@ -302,7 +306,7 @@ class Invoice extends Fpdi
    {
       $total = 0;
       foreach ($this->entries as $entry) {
-         $total += $entry['price'] * $entry['quantity'];
+         $total += isset($entry['total']) ? $entry['total'] : $entry['quantity'] * $entry['price'];
       }
 
       return $total;
